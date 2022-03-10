@@ -8,8 +8,7 @@ The scripts in this repo demonstrate the way you can work with F# and OSM data. 
 
 If you are interested in more about F# and OSM data please star this repo, leave comments in the wiki, discussions. I would be happy to get more geo people into working with F#.
 
-
-here is an excerpt from [example.fsx](https://github.com/snuup/openstreetmap-with-fsharp/blob/main/example.fsx)
+Here is an excerpt from [example.fsx](https://github.com/snuup/openstreetmap-with-fsharp/blob/main/example.fsx)
 
 ```fsharp
 let marburg = fm.FindRelByName "Marburg"
