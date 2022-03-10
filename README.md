@@ -7,3 +7,21 @@ For instance, accessing the data inside a memory mapped FlatMap file feels like 
 The scripts in this repo demonstrate the way you can work with F# and OSM data. If you do similar things with other languages, Python, Java, Go or C++ and maybe databases - lets compare execution times and code samples.
 
 If you are interested in more about F# and OSM data please star this repo, leave comments in the wiki, discussions. I would be happy to get more geo people into working with F#.
+
+```fsharp
+let marburg = fm.FindRelByName "Marburg"
+
+marburg.Members // list members
+
+let ways = // get the ways of marburg
+    marburg.Members
+    |> Seq.map (fun m -> fm.GetWay m.Id)
+    |> Seq.toList
+
+type Way with // adorn type Way so we easily get first and last node id
+    member w.First with get() = (w.Nodes |> Seq.head).Id
+    member w.Last  with get() = (w.Nodes |> Seq.last).Id
+
+ways
+|> List.map (fun w -> w.Id, w.First, w.Last) // list way-id with first and last node-id
+```
